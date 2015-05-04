@@ -34,6 +34,7 @@ module.exports = function(grunt) {
         done();
       }, function(err) {
         grunt.log.error(err);
+        done(false);
       });
     } else if(command === 'watch') {
       if (!dest) {

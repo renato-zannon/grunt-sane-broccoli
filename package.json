@@ -23,7 +23,7 @@
     "url": "https://github.com/renato-zannon/grunt-sane-broccoli.git"
   },
   "dependencies": {
-    "broccoli": "~0.12.3",
+    "broccoli": "~0.16.2",
     "broccoli-sane-watcher": "^1.1.1",
     "copy-dereference": "^1.0.0",
     "grunt": "~0.4.2",

@@ -11,10 +11,12 @@
     "test": "grunt test"
   },
   "author": "Taras Mankovski <taras@quandl.com>",
-  "contributors": [{
-    "name": "Renato Zannon",
-    "email": "renato@rrsz.com.br"
-  }],
+  "contributors": [
+    {
+      "name": "Renato Zannon",
+      "email": "renato@rrsz.com.br"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
   },
   "dependencies": {
     "broccoli": "~0.12.3",
+    "broccoli-sane-watcher": "^1.1.1",
     "copy-dereference": "^1.0.0",
     "grunt": "~0.4.2",
     "mkdirp": "^0.5.0",

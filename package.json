@@ -17,6 +17,12 @@
       "email": "renato@rrsz.com.br"
     }
   ],
+  "maintainers": [
+    {
+      "name": "Renato Zannon",
+      "email": "renato@rrsz.com.br"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",

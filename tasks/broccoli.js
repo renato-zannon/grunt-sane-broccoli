@@ -57,6 +57,14 @@ module.exports = function(grunt) {
         var watcher = plugin.watch(dest, config).on('error', function(error) {
           grunt.log.error(error.stack);
         });
+
+        var cleanup = function() {
+          return watcher.builder.cleanup();
+        };
+
+        process.on('SIGINT', cleanup);
+        process.on('exit',   cleanup);
+
         if (this.data.liveReload) {
           var liveReload = require('tiny-lr');
           var liveReloadServer = liveReload();

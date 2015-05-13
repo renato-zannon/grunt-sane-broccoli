@@ -59,11 +59,13 @@ module.exports = function(grunt) {
         });
 
         var cleanup = function() {
-          return watcher.builder.cleanup();
+          return watcher.builder.cleanup().then(function() {
+            process.exit();
+          });
         };
 
-        process.on('SIGINT', cleanup);
-        process.on('exit',   cleanup);
+        process.on('SIGINT',  cleanup);
+        process.on('SIGTERM', cleanup);
 
         if (this.data.liveReload) {
           var liveReload = require('tiny-lr');

@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
   var path = require('path');
+  var liveReload = require('tiny-lr');
   var plugin = require(path.join(__dirname, '..', 'lib', 'plugin'));
 
   grunt.registerMultiTask('broccoli', 'Execute Custom Broccoli task', broccoliTask);
@@ -15,7 +16,6 @@ module.exports = function(grunt) {
       process.env.BROCCOLI_ENV = 'development';
     }
 
-    var liveReloadPort = this.data.liveReloadPort || 35729;
     var command = this.args[0],
       dest = this.data.dest,
       config = this.data.config;
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
       if (!dest) {
         grunt.fatal('You must specify a destination folder, eg. `dest: "dist"`.');
       }
-      if(this.data.background) {
+      if (this.data.background) {
         var backgroundProcess = grunt.util.spawn({
           cmd: process.argv[0],
           args: [
@@ -67,24 +67,27 @@ module.exports = function(grunt) {
         process.on('SIGINT',  cleanup);
         process.on('SIGTERM', cleanup);
 
-        if (this.data.liveReload) {
-          var liveReload = require('tiny-lr');
-          var liveReloadServer = liveReload();
-          liveReloadServer.listen(liveReloadPort);
-          watcher.on("livereload", function(){
-            liveReloadServer.changed({body: {files: ['LiveReload files']}});
-          });
-        }
+        if (this.data.liveReload) initLiveReload.call(this, watcher);
       }
       this.async();
     } else if(command === 'serve') {
       var host = this.data.host || 'localhost';
       var port = this.data.port || 4200;
 
-      plugin.serve(config, { host: host, port: port, liveReloadPort: liveReloadPort });
+      var watcher = plugin.serve(config, { host: host, port: port });
+      initLiveReload.call(this, watcher);
       this.async();
     } else {
       grunt.fatal('You must specify either the :build, :watch or :serve command after the target.');
     }
+  }
+
+  function initLiveReload(watcher) {
+    var port = this.data.liveReloadPort || 35729;
+    var server = liveReload();
+    server.listen(port);
+    watcher.on('livereload', function() {
+      server.changed({body: {files: ['LiveReload files']}});
+    });
   }
 };

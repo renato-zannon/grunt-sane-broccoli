@@ -1,6 +1,6 @@
 {
   "name": "grunt-sane-broccoli",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Broccoli build and serve tasks for Grunt task runner using the sane watcher",
   "main": "Gruntfile.js",
   "tags": [

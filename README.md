@@ -4,6 +4,10 @@ Allows you to execute your Broccoli configurations as Grunt tasks. [Broccoli](ht
 
 This is a fork of [grunt-broccoli](https://github.com/quandl/grunt-broccoli), substituting the default broccoli watcher with `broccoli-sane-watcher`.
 
+## Deprecated
+
+This module has been deprecated in favor of [grunt-broccoli ^1.0.0](https://github.com/EmberSherpa/grunt-broccoli). That module now depends on Broccoli ^1.0.0, which has integrated the code from broccoli-sane-watcher into core.
+
 ## Running your tasks
 
 grunt-sane-broccoli is a multi-task so you must specify a target when running the task.

@@ -6,7 +6,7 @@ This is a fork of [grunt-broccoli](https://github.com/quandl/grunt-broccoli), su
 
 ## Deprecated
 
-This module has been deprecated in favor of [grunt-broccoli ^1.0.0](https://github.com/EmberSherpa/grunt-broccoli/blob/master/CHANGELOG.md). That module now depends on Broccoli ^1.0.0, which has integrated the code from broccoli-sane-watcher into core.
+This module has been deprecated in favor of [grunt-broccoli ^1.0.0](https://github.com/EmberSherpa/grunt-broccoli). That module now depends on Broccoli ^1.0.0, which has integrated the code from broccoli-sane-watcher into core.
 
 ## Running your tasks
 
